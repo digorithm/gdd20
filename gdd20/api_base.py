@@ -92,4 +92,3 @@ class RESTClientJSONBase(RESTClientBase):
 
   def prepare_response(self, response):
     return response.json()
-
