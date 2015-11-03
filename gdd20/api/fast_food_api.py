@@ -3,15 +3,14 @@ from api_base import RESTClientJSONBase
 
 
 class FastFoodClient(RESTClientJSONBase):
-    
+
     def __init__(self, app=None, recipe_id=None):
-        
         super(FastFoodClient, self).__init__(None, None)
-        self.timeout = 5
+        self.timeout = 10000
         self.init_app()
 
     def init_app(self):
-        self.api_url = 'http://0.0.0.0:8080/api/v1' 
+        self.api_url = 'http://0.0.0.0:8000/api/v1'
     
     def get_all_recipes(self):
         return self.get('/recipes/').data
