@@ -17,6 +17,6 @@ def index():
 def recipes_items():
 	form = SearchRecipes()
 	items = form.recipe_item.data
-	return render_template('recipes/pesquisa.html', 
+	return render_template('recipes/search.html', 
 		title='Recipes Result', 
 		result_recipes=fast_food.get_recipe_by_items(items, True))
