@@ -19,4 +19,4 @@ def recipes_items():
 	items = form.recipe_item.data
 	return render_template('recipes/pesquisa.html', 
 		title='Recipes Result', 
-		result_recipes=fast_food.get_recipe_by_items(items, True).data)
+		result_recipes=fast_food.get_recipe_by_items(items, True))
