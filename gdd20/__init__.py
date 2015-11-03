@@ -10,14 +10,21 @@ app = Flask(__name__)
 # Configurations
 app.config.from_object('config')
 
+# Importing of variable necessary for creating blueprint
+from views.recipes_view import recipes
+
+# Creating blueprint for recipe route
+app.register_blueprint(recipes)
+app.register_blueprint(recipes, url_prefix='/recipe')
+
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
 
 # Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404
+# @app.errorhandler(404)
+# def not_found(error):
+#     return render_template('404.html'), 404
 
 # Build the database:
 # This will create the database file using SQLAlchemy

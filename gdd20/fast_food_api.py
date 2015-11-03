@@ -1,5 +1,4 @@
 # -*- encode utf-8 -*-
-
 from api_base import RESTClientJSONBase
 
 
@@ -21,4 +20,4 @@ class FastFoodClient(RESTClientJSONBase):
         return self.get('/recipes/%d' % recipe_id).data
 
     def get_recipe_by_items(self, items, restrict):
-        return self.get('/recipes/items/items={}&restrict={}'.format(items, restric))
+        return self.get('/recipes/items/?items={}&restrict={}'.format(items, restrict)).data
