@@ -1,0 +1,64 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+<div id="dialog" class="modal fade">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Modal title</h4>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="col-lg-12 col-lg-offset-4">
+			<div class="navbar-header">
+				<a href="#"><img style="width:350px;" class="img-responsive" src="{{ url_for('static', filename='images/logo.png') }}" /></a>
+			</div>
+		</div>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<header>
+
+</header>
+
+<!-- Header -->
+<section id="principal">
+	<div class="new-container div-red-absolute">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="col-lg-4" style="top:-67px;">
+					<img class="placa" src="{{ url_for('static', filename='images/placa_nova.png') }}" />
+				</div>
+				<div class="col-lg-4">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="col-lg-10 aligning-text-left" style="padding-top:30px;">
+							<form method="post" action="{{url_for('recipes.recipes_items')}}" name="search_recipes">
+								{{ form.recipe_item(class="form-control") }}
+
+								<div class="col-lg-4">
+									<div class="col-middle-input-button">
+										<input type="image" src="{{ url_for('static', filename='images/buscar.png') }}" />
+									</div>
+							</div>
+							</form>
+							</div>
+							<div id="12" class="col-lg-2">
+								<a href="#" onclick="checking()"><img src="{{ url_for('static', filename='images/botao.png') }}" /></a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
