@@ -10,6 +10,13 @@ app = Flask(__name__)
 # Configurations
 app.config.from_object('config')
 
+# Importing of variable necessary for creating blueprint
+from views.recipes_view import recipes
+
+# Creating blueprint for recipe route
+app.register_blueprint(recipes)
+app.register_blueprint(recipes, url_prefix='/recipe')
+
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
