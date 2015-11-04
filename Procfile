@@ -1,1 +1,1 @@
-web: run-program gunicorn run:app -t 100000
+web: gunicorn run:app -t 100000
