@@ -10,7 +10,7 @@ class FastFoodClient(RESTClientJSONBase):
         self.init_app()
 
     def init_app(self):
-        self.api_url = 'http://0.0.0.0:8000/api/v1'
+        self.api_url = 'http://gdd20fastfood.herokuapp.com/api/v1'
     
     def get_all_recipes(self):
         return self.get('/recipes/').data
