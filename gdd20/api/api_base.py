@@ -7,7 +7,6 @@ from collections import namedtuple
 CODES = requests.status_codes.codes
 
 RESTClientResponse = namedtuple('RESTClientResponse', ['status', 'data'])
-# testing the codeshipp
 
 class RESTClientBase(object):
 
