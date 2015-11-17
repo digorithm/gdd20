@@ -1,5 +1,5 @@
 # Import flask and template operators
-from flask import Flask, render_template
+from flask import Flask
 
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -11,11 +11,13 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 # Importing of variable necessary for creating blueprint
-from views.recipes_view import recipes
+from views.recipes_view import recipe_blueprint
+from views.login_view import login_blueprint
 
-# Creating blueprint for recipe route
-app.register_blueprint(recipes)
-app.register_blueprint(recipes, url_prefix='/recipe')
+# Creating blueprint for route
+app.register_blueprint(recipe_blueprint)
+
+app.register_blueprint(login_blueprint)
 
 # Define the database object which is imported
 # by modules and controllers

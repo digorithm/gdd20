@@ -24,10 +24,6 @@
     <!-- /.container-fluid -->
 </nav>
 
-<header>
-
-</header>
-
 <!-- Header -->
 <section id="principal">
 	<div class="new-container div-red-absolute">
@@ -39,23 +35,20 @@
 				<div class="col-lg-4">
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="col-lg-10 aligning-text-left" style="padding-top:30px;">
-							<form method="post" action="{{url_for('recipes.recipes_items')}}" name="search_recipes">
-								{{ form.recipe_item(class="form-control") }}
-
+							<form method="post" action="{{url_for('recipe_blueprint.recipes_search')}}" name="search_recipes">
+								<div class="col-lg-10">
+									<input type="text" id="items" name="items" class="form-control"  />
+								</div>
 								<div class="col-lg-4">
-									<div class="col-middle-input-button">
-										<input type="image" src="{{ url_for('static', filename='images/buscar.png') }}" />
+									<div class="col-lg-12">
+										<button id="search_recipes" class="search_recipes" type="submit">
+											<img src="{{ url_for('static', filename='images/buscar.png') }}" />
+										</button>
 									</div>
-							</div>
+								</div>
 							</form>
-							</div>
-							<div id="12" class="col-lg-2">
-								<a href="#" onclick="checking()"><img src="{{ url_for('static', filename='images/botao.png') }}" /></a>
-							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
