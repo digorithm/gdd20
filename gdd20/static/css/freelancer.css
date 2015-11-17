@@ -17,6 +17,15 @@ p.small {
     font-size: 16px;
 }
 
+.button_search_items {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
 a,
 
 h1,
@@ -217,16 +226,6 @@ section.success a.active {
     color: #2c3e50;
 }
 
-@media(max-width:767px) {
-    section {
-        padding: 75px 0;
-    }
-
-    section.first {
-        padding-top: 75px;
-    }
-}
-
 #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
@@ -376,9 +375,7 @@ footer .footer-col {
 }
 
 .footer-below {	
-	position: absolute;
-	padding:15px;
-    bottom: 0;
+	padding:1%;
     width: 100%;
     height: 50px;
     background-color: #3A3B3C;
@@ -489,8 +486,7 @@ footer .footer-col {
 }
 
 .new-container{
-padding-left:15px;
-padding-right:15px;
+
 }
 
 .div-red-absolute{
@@ -519,10 +515,9 @@ text-align:center;
 }
 
 .picture{
-padding:10px;
-overflow: hidden;
-background-color:#888888;
-
+    padding:10px;
+    overflow: hidden;
+    background-color:#888888;
 }
 
 .photo{
@@ -531,41 +526,57 @@ width:100%;
 
 .left_div{
 	float:left;
-	height:700px;
-	max-height:700px;
-	max-width:300px;
 	position:relative;
-	overflow:hidden;
-	padding: 10px;
 }
 
-.center_div{
-	float:left;
-	height:700px;
-	max-height:700px;
-	max-width:1350px;
-	position:relative;
-	padding: 10px;
+.left_div img {
+    width: 60%;
 }
 
-.right_div{
-	float:left;
-	height:700px;
-	max-height:700px;
-	max-width:300px;
-	position:relative;
-	
+.right_div {
+    float: right;
+    position: relative;
+    padding-top: 0%;
+    width: 14%;
+    margin-top: -4%;
 }
 
-.voltar{
-	padding-top:570px;
-
+.right_div img {
+    width: 40%;
 }
 
-section .new-container .row .right_div{
-	padding:0;
-	top:-120px;
-
+.desc-content h3 {
+    font-size: 20px !important;
+    padding: 0;
+    margin: 0;
 }
 
+.desc-content p {
+    font-size: 15px !important;
+    padding: 0;
+    margin: 0;
+}
 
+.panel-content {
+    border-color: #ecf0f1;
+    padding-top: 3%;
+}
+
+.principal {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+}
+
+.image_logo {
+    width: 15%;
+}
+
+.search_recipes {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
