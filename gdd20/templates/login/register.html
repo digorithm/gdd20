@@ -1,0 +1,65 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+<div id="dialog" class="modal fade">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Modal title</h4>
+	  </div>
+	</div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="col-lg-12 col-lg-offset-4">
+			<div class="navbar-header">
+				<a href="#"><img style="width:350px;" class="img-responsive" src="{{ url_for('static', filename='images/logo.png') }}" /></a>
+			</div>
+		</div>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<section id="principal">
+	<div class="new-container div-red-absolute">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="col-lg-4" style="top:-67px;">
+					<img class="placa" src="{{ url_for('static', filename='images/placa_nova.png') }}" />
+				</div>
+				<div class="col-lg-4">
+					<div class="row">
+						<div class="col-lg-12">
+							<form method=POST action="" name="search_recipes">
+								<div class="form-group">
+							    	<label for="exampleInputEmail1">Email address</label>
+							    	<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+								</div>
+							  <div class="form-group">
+							    	<label for="exampleInputPassword1">Password</label>
+							    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							  </div>
+  							  <div class="form-group">
+							    	<label for="exampleInputPassword1">Repeat Password</label>
+							    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							  </div>
+							  <div class="checkbox">
+							    <label>
+							      <input type="checkbox"> Save Login
+							    </label>
+							  </div>
+						  		<button type="submit" class="btn btn-default">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
