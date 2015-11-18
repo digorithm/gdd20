@@ -1,5 +1,7 @@
 # -*- encode utf-8 -*-
 from api_base import RESTClientJSONBase
+import requests
+import json
 
 
 class FastFoodClient(RESTClientJSONBase):
@@ -10,7 +12,7 @@ class FastFoodClient(RESTClientJSONBase):
         self.init_app()
 
     def init_app(self):
-        self.api_url = 'http://gdd20fastfood.herokuapp.com/api/v1'
+        self.api_url = 'http://localhost:8000/api/v1'
     
     def get_all_recipes(self):
         return self.get('/recipes/').data
@@ -20,3 +22,11 @@ class FastFoodClient(RESTClientJSONBase):
 
     def get_recipe_by_items(self, items, restrict):
         return self.get('/recipes/items/?items={}&restrict={}'.format(items, restrict)).data
+
+    def register_new_user(self, login, password, role, name):
+        data = {'login': login,
+                'password': password,
+                'role': role,
+                'name': name}
+        req = requests.post(self.api_url+'/users/', data=data)
+        return json.loads(req.text)
