@@ -11,14 +11,29 @@
 	</div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<style>
+	.btn-primary {
+  color: #ffffff;
+  background-color: #0DCAF2;
+  border-color: #F4F2F1;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #0DCAF2;
+  background-color: #F5F5F5;
+  border-color: #DBD8D7;
+}
 
+</style>
 <!-- Navigation -->
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="col-lg-12 col-lg-offset-4">
 			<div class="navbar-header">
 				<a href="#"><img style="width:350px;" class="img-responsive" src="{{ url_for('static', filename='images/logo.png') }}" /></a>
+			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: 285px;">
+			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
 			</div>
+			
 		</div>
     </div>
     <!-- /.container-fluid -->

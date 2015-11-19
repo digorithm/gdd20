@@ -8,6 +8,8 @@
 			<div class="navbar-header">
 				<a href="/"><img class="image_logo" src="{{ url_for('static', filename='images/logo.png')}}" /></a>
 			</div>
+			<a href="#" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
+			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
 		</div>
 		<div class="col-lg-2">
 			<div class="navbar-header">
@@ -16,6 +18,18 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+<style>
+	.btn-primary {
+  color: #ffffff;
+  background-color: #0DCAF2;
+  border-color: #F4F2F1;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #0DCAF2;
+  background-color: #F5F5F5;
+  border-color: #DBD8D7;
+}
+</style>
 
 <div class="right_div">
 	<img src="{{ url_for('static', filename='images/colher_receita.png')}}" />
