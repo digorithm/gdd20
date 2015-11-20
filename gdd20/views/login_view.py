@@ -22,4 +22,5 @@ def login():
     password = request.form['password']
     user = fast_food.authenticate_user(login, password)
     login_user(user)
-    return redirect(request.args.get('next') or url_for('main.index')
+    return redirect(request.args.get('next') or url_for('main.index'))
+    
