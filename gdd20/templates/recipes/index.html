@@ -42,27 +42,34 @@
 
 <!-- Header -->
 <section id="principal">
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+<div class="row">
+  <div class="col-xs-6 col-md-4" style="margin-top: -5.2%;">
+  	<img class="placa" src="{{ url_for('static', filename='images/placa_nova.png') }}" />
+  </div>
+  <form method="post" action="{{url_for('recipe_blueprint.recipes_search')}}" name="search_recipes">
+  <div class="col-xs-6 col-md-4" style="padding-top: 5%;">
+  		<div class="col-lg-10" style="width: 90%">
+  			<input type="text" id="items" name="items" class="form-control"  />
+  		</div>
+  </div>
+  <div class="col-xs-6 col-md-4">
+  	<button id="search_recipes" class="search_recipes" type="submit">
+  		<img src="{{ url_for('static', filename='images/buscar.png') }}" />
+  	</button>
+  </div>
+  </form>
+</div>
 	<div class="new-container div-red-absolute">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="col-lg-4" style="top:-67px;">
-					<img class="placa" src="{{ url_for('static', filename='images/placa_nova.png') }}" />
+					
 				</div>
 				<div class="col-lg-4" style="padding-left:5%">
 					<div class="row">
 						<div class="col-lg-12">
-							<form method="post" action="{{url_for('recipe_blueprint.recipes_search')}}" name="search_recipes">
-								<div class="col-lg-10" style="width: 90%">
-									<input type="text" id="items" name="items" class="form-control"  />
-								</div>
-								<div class="col-lg-4">
-									<div class="col-lg-12">
-										<button id="search_recipes" class="search_recipes" type="submit">
-											<img src="{{ url_for('static', filename='images/buscar.png') }}" />
-										</button>
-									</div>
-								</div>
-							</form>
+						
 						</div>
 					</div>
 				</div>
