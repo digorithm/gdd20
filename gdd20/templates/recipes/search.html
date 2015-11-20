@@ -1,6 +1,44 @@
-{% extends "base/layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Geladeira - {{ title }}</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/freelancer.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+<style>
+    
+    .form-control:focus {
+        border-color: #C1BEBE;
+    }
+
+</style>
+
 <!-- Navigation -->
 <nav class="navbar navbar-default">
     <div class="new-container">
@@ -8,7 +46,7 @@
 			<div class="navbar-header">
 				<a href="/"><img class="image_logo" src="{{ url_for('static', filename='images/logo.png')}}" /></a>
 			</div>
-			<a href="#" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
+			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
 			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
 		</div>
 		<div class="col-lg-2">
@@ -74,4 +112,26 @@
 	</div>
 </div>
 </section>
-{% endblock %}
+    <footer class="footer-below-result-search">
+        <div class="new-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-1 aligning-text-right">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Sobre
+                        </span></a>
+                    </div>
+                    <div class="col-lg-1 aligning-text-left">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Termos
+                        </span></a>
+                    </div>
+                    <div class="col-lg-10 aligning-text-right">
+                        <span>
+                            Geladeira do dia 20. Todos os direitos reservados.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
