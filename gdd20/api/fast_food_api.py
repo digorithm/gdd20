@@ -3,6 +3,9 @@ from api_base import RESTClientJSONBase
 import requests
 import json
 from gdd20.models.db import User
+from gdd20 import login_manager
+
+api_url = 'http://gdd20fastfood.herokuapp.com/api/v1'
 
 
 class FastFoodClient(RESTClientJSONBase):
@@ -39,3 +42,15 @@ class FastFoodClient(RESTClientJSONBase):
                     name=u['user']['name'], email=u['user']['id'],
                     role=u['user']['role'])
         return user
+
+    @login_manager.user_loader
+    def load_user(id):
+        data = {'user_id': id}
+        req = json.loads(requests.get(api_url+'/users/', data=data).text)
+        if not req:
+            return None
+        # if req, then build the object and return it
+        return None     # THIS IS TEMPORARY!!!!!!!!
+
+
+

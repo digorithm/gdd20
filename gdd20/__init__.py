@@ -8,7 +8,7 @@ from flask.ext.login import LoginManager
 
 # Define the WSGI application object
 app = Flask(__name__)
-
+app.config['DEBUG'] = True
 login_manager = LoginManager()
 
 login_manager.init_app(app)
