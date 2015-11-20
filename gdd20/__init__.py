@@ -4,11 +4,25 @@ from flask import Flask
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
+from flask.ext.login import LoginManager
+
 # Define the WSGI application object
 app = Flask(__name__)
 
+login_manager = LoginManager()
+
+login_manager.init_app(app)
+
 # Configurations
 app.config.from_object('config')
+
+from flask import redirect
+
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/login')
+
 
 # Importing of variable necessary for creating blueprint
 from views.recipes_view import recipe_blueprint

@@ -2,6 +2,7 @@
 from api_base import RESTClientJSONBase
 import requests
 import json
+from gdd20.models.db import User
 
 
 class FastFoodClient(RESTClientJSONBase):
@@ -30,3 +31,11 @@ class FastFoodClient(RESTClientJSONBase):
                 'name': name}
         req = requests.post(self.api_url+'/users/', data=data)
         return json.loads(req.text)
+
+    def authenticate_user(self, login, password):
+        req = requests.get(self.api_url+'/token', auth=(login, password))
+        u = json.loads(req.text)
+        user = User(token=u['token'], id=u['user']['id'],
+                    name=u['user']['name'], email=u['user']['id'],
+                    role=u['user']['role'])
+        return user
