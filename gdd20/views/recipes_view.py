@@ -22,7 +22,7 @@ def recipes_search():
     if items == "":
         return redirect(url_for('recipe_blueprint.index'))
 
-    return render_template('recipes/search.html',
+    return render_template('recipes/result_search.html',
                            title='Recipes Result',
                            result_recipes=fast_food.get_recipe_by_items(items.encode("utf-8"),
                                                                         True))
