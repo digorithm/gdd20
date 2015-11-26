@@ -55,8 +55,15 @@
 			<div class="navbar-header">
 				<a href="/"><img class="image_logo" src="{{ url_for('static', filename='images/logo.png')}}" /></a>
 			</div>
+            {% if not current_user.is_authenticated %}
 			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
 			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
+            {% else %}
+            <a href="#" class="btn btn-success btn-sm" style="position: absolute; top: 10px; right: 285px;">
+            <span class="glyphicon glyphicon-log-in"></span> Ir para minha página</a>
+            <a href="/logout/" class="btn btn-danger btn-sm" style="position: absolute; top: 50px; right: 285px;">
+            <span class="glyphicon glyphicon-log-out"></span> Sair da minha conta</a>
+            {% endif %}
 		</div>
 		<div class="col-lg-2">
 			<div class="navbar-header">

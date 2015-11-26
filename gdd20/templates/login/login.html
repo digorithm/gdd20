@@ -1,6 +1,104 @@
-{% extends "base/layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Geladeira - {{ title }}</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/freelancer.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+<style>
+    
+    .form-control:focus {
+        border-color: #C1BEBE;
+        color: black;
+        font-family: "Lato";
+    }
+
+</style>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+    <div class="new-container">
+        <div class="col-lg-10">
+      <div class="navbar-header">
+        <a href="/"><img class="image_logo" src="{{ url_for('static', filename='images/logo.png')}}" /></a>
+      </div>
+            {% if not current_user.is_authenticated %}
+      <a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
+      <span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
+            {% else %}
+            <a href="#" class="btn btn-success btn-sm" style="position: absolute; top: 10px; right: 285px;">
+            <span class="glyphicon glyphicon-log-in"></span> Ir para minha página</a>
+            <a href="/logout/" class="btn btn-danger btn-sm" style="position: absolute; top: 50px; right: 285px;">
+            <span class="glyphicon glyphicon-log-out"></span> Sair da minha conta</a>
+            {% endif %}
+    </div>
+    <div class="col-lg-2">
+      <div class="navbar-header">
+      </div>
+    </div>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<style>
+  .btn-primary {
+  color: #ffffff;
+  background-color: #0DCAF2;
+  border-color: #F4F2F1;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #0DCAF2;
+  background-color: #F5F5F5;
+  border-color: #DBD8D7;
+}
+
+.btn-warning {
+  color: #ffffff;
+  background-color: #F7370E;
+  border-color: #F7370E;
+  width: 86%;
+}
+
+.btn-info {
+  color: #ffffff;
+  background-color: #217dbb;
+  border-color: #2077b2;
+  width: 86%;
+}
+}
+</style>
+
+<div class="right_div">
+  <img src="{{ url_for('static', filename='images/colher_receita.png')}}" />
+  <img src="{{ url_for('static', filename='images/faca_receita.png')}}" />
+</div>
+
+
 <div id="dialog" class="modal fade">
   <div class="modal-dialog">
 	<div class="modal-content">
@@ -23,72 +121,101 @@
   border-color: #DBD8D7;
 }
 
+h4{
+  font-family: "Lato";
+}
+
+.form-control, input {
+  border-width: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: white;
+  border-color: #C7C7C7;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 </style>
 <!-- Navigation -->
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="col-lg-12 col-lg-offset-4">
-			<div class="navbar-header">
-				<a href="/"><img style="width:350px;" class="img-responsive" src="{{ url_for('static', filename='images/logo.png') }}" /></a>
-			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: 285px;">
-			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
-			</div>
-			
-		</div>
-    </div>
-    <!-- /.container-fluid -->
-</nav>
 
 <!-- Header -->
 <section id="principal" class="login-register">
 
 <div class="row">
   <div class="col-xs-6 col-sm-3"></div>
-  <div class="col-xs-6 col-sm-3">
-  <h4 style="color:white">CADASTRE-SE</h4>
-  <hr>
-  		<form method=POST action="" name="search_recipes">
+  <div class="col-xs-6 col-sm-3 text-center" style="margin-right:5%; margin-top:3%; background-color:#F5F5F5; border-radius:10px;">
+  <h4 style="color:#3A3B3C; text-align:center; margin-bottom: 20px;">CADASTRE-SE</h4>
+  		<form method=POST action="/register/" name="register">
   			<div class="form-group">
-  		    	<label for="exampleInputEmail1">Email address</label>
-  		    	<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  		    	<label for="exampleInputEmail1">Email</label>
+  		    	<input type="email" class="form-control" id="email"
+            name="email" placeholder="Email">
   			</div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nome</label>
+            <input type="text" class="form-control" id="name"
+            name="name" placeholder="Name">
+        </div>
   		  <div class="form-group">
-  		    	<label for="exampleInputPassword1">Password</label>
-  		    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  		    	<label for="exampleInputPassword1">Senha</label>
+  		    	<input type="password" class="form-control" id="password"
+            name="password" placeholder="Password">
   		  </div>
-  		  <div class="checkbox">
-  		    <label>
-  		      <input type="checkbox"> Esqueceu a senha?
-  		    </label>
-  		  </div>
-  	  		<button type="submit" class="btn btn-info">Cadastre-se</button>
+  	  		<button style="margin-bottom: 35px;" type="submit" class="btn btn-info">Cadastre-se</button>
   		</form>
   </div>
 
   <!-- Add the extra clearfix for only the required viewport -->
   <div class="clearfix visible-xs-block"></div>
 
-  <div class="col-xs-6 col-sm-3">
-  <h4 style="color:white">ENTRAR</h4>
-  <hr>
-  		<form method=POST action="" name="search_recipes">
+  <div class="col-xs-6 col-sm-3 text-center" style="margin-top:3%; background-color:#F5F5F5; border-radius:10px; margin-bottom: 5%;">
+  <h4 style="color:#3A3B3C; text-align:center; margin-bottom: 20px;"> ENTRAR</h4>
+  		<form method=POST action="/login/" name="search_recipes">
   			<div class="form-group">
-  		    	<label for="exampleInputEmail1">Email address</label>
-  		    	<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  		    	<label for="exampleInputEmail1">Email</label>
+  		    	<input type="email" class="form-control" id="email" name="email" placeholder="Email">
   			</div>
   		  <div class="form-group">
-  		    	<label for="exampleInputPassword1">Password</label>
-  		    	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  		    	<label for="exampleInputPassword1">Senha</label>
+  		    	<input type="password" class="form-control" id="password" name="password" placeholder="Password">
   		  </div>
   		  <div class="checkbox">
   		    <label>
   		      <input type="checkbox"> Lembrar-me durante 30 dias
   		    </label>
   		  </div>
-  	  		<button type="submit" class="btn btn-warning">Entrar</button>
+  	  		<button style="margin-bottom: 40px; margin-top: 52px;" type="submit" class="btn btn-warning">Entrar</button>
   		</form>
   </div>
   <div class="col-xs-6 col-sm-3"></div>
 </div>
 </section>
-{% endblock %}
+<footer class="footer-below-result-search">
+        <div class="new-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-1 aligning-text-right">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Sobre
+                        </span></a>
+                    </div>
+                    <div class="col-lg-1 aligning-text-left">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Termos
+                        </span></a>
+                    </div>
+                    <div class="col-lg-10 aligning-text-right">
+                        <span>
+                            Geladeira do dia 20. Todos os direitos reservados.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
