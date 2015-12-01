@@ -28,6 +28,15 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "add688cf-c254-4408-bfe3-144a9f17ad2f", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
 <body id="page-top" class="index">
@@ -81,6 +90,18 @@
 	<img src="{{ url_for('static', filename='images/faca_receita.png')}}" />
 </div>
 
+    <script type="text/javascript">
+        function SlideUp(id, div, flag) {
+            if (flag === 'down') {
+                $("#"+div).show(1000);
+                $("#"+id).hide();
+            } else if (flag === 'up') {
+                $("#"+div).hide(1000);
+                $("#"+id).css('float', 'right');
+                $("#"+id).show(1000);
+            }
+        }
+    </script>
 <!-- Header -->
 <section id="principal" class="principal">
 <div class="new-container div-red-absolute">
@@ -99,15 +120,29 @@
 							<div class="desc-content">
 							<h3>{{recipes.title}}</h3>
 							<hr />								
-									{% for steps in recipes.steps %}
-										<p> {{ loop.index }} - {{ steps }} </p>
-									{% endfor %}
+                            <h5>Ingredients</h5>
+								{% for ingredients in recipes.ingredients %}
+									<p> {{ ingredients }} </p>
+								{% endfor %}
 							</div>
 							
 							<div class="text-right">
-								<p><a href="#"><img src="{{ url_for('static', filename='images/botao_vermelho.png')}}" /></a></p>
+								<a href="javascript:void(0)" id="recipes-more{{loop.index}}" onclick="SlideUp('recipes-more{{loop.index}}', 'steps-content{{loop.index}}', 'down');"><img src="{{ url_for('static', filename='images/botao_vermelho.png')}}" /></a>
 							</div>
 						</div>
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-8" style="display:none" id="steps-content{{loop.index}}">
+                            <h5>Steps</h5>
+                            <div class="steps-content">                     
+                                {% for steps in recipes.steps %}
+                                    <p> {{ loop.index}} - {{ steps }} </p>
+                                {% endfor %}
+                            </div>
+                            <div class="text-right">
+                                <a href="javascript:void(0)" id="recipes-hide{{loop.index}}" onclick="SlideUp('recipes-more{{loop.index}}', 'steps-content{{loop.index}}', 'up');"><img src="{{ url_for('static', filename='images/botao_vermelho_menos.png')}}" /></a>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -134,6 +169,8 @@
                         </span></a>
                     </div>
                     <div class="col-lg-10 aligning-text-right">
+                                        <span class='st_facebook_hcount' displayText='Facebook'></span>
+                    <span class='st_twitter_hcount' displayText='Tweet'></span>
                         <span>
                             Geladeira do dia 20. Todos os direitos reservados.
                         </span>
@@ -142,3 +179,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ url_for('static', filename='js/freelancer.js"') }}></script>
+    </body>
+</html>
