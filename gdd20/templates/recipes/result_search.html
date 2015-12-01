@@ -91,18 +91,16 @@
 </div>
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#recipes-more").click(function(event){
-            console.log(event);
-            $("#steps-content").show(1000);
-            $('#recipes-more').hide();
-        });
-    });
-        $('#recipes-hide').click(function(event){
-            $(event.target.id).hide(1000);
-            $('#recipes-more').css('float', 'right');
-            $('#recipes-more').show(1000);
-        });
+        function SlideUp(id, div, flag) {
+            if (flag === 'down') {
+                $("#"+div).show(1000);
+                $("#"+id).hide();
+            } else if (flag === 'up') {
+                $("#"+div).hide(1000);
+                $("#"+id).css('float', 'right');
+                $("#"+id).show(1000);
+            }
+        }
     </script>
 <!-- Header -->
 <section id="principal" class="principal">
@@ -123,26 +121,26 @@
 							<h3>{{recipes.title}}</h3>
 							<hr />								
                             <h5>Ingredients</h5>
-									{% for ingredients in recipes.ingredients %}
-										<p> {{ ingredients }} </p>
-									{% endfor %}
+								{% for ingredients in recipes.ingredients %}
+									<p> {{ ingredients }} </p>
+								{% endfor %}
 							</div>
 							
 							<div class="text-right">
-								<a href="javascript:void(0)" id="recipes-more"><img src="{{ url_for('static', filename='images/botao_vermelho.png')}}" /></a>
+								<a href="javascript:void(0)" id="recipes-more{{loop.index}}" onclick="SlideUp('recipes-more{{loop.index}}', 'steps-content{{loop.index}}', 'down');"><img src="{{ url_for('static', filename='images/botao_vermelho.png')}}" /></a>
 							</div>
 						</div>
                         <div class="col-lg-4">
                         </div>
-                        <div class="col-lg-8" style="display:none" id="steps-content">
+                        <div class="col-lg-8" style="display:none" id="steps-content{{loop.index}}">
                             <h5>Steps</h5>
                             <div class="steps-content">                     
-                                    {% for steps in recipes.steps %}
-                                        <p> {{ loop.index}} - {{ steps }} </p>
-                                    {% endfor %}
+                                {% for steps in recipes.steps %}
+                                    <p> {{ loop.index}} - {{ steps }} </p>
+                                {% endfor %}
                             </div>
                             <div class="text-right">
-                                <a href="javascript:void(0)" id="recipes-hide"><img src="{{ url_for('static', filename='images/botao_vermelho.png')}}" /></a>
+                                <a href="javascript:void(0)" id="recipes-hide{{loop.index}}" onclick="SlideUp('recipes-more{{loop.index}}', 'steps-content{{loop.index}}', 'up');"><img src="{{ url_for('static', filename='images/botao_vermelho_menos.png')}}" /></a>
                             </div>
                         </div>
 					</div>
