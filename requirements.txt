@@ -7,3 +7,4 @@ dockerpty==0.3.4
 gunicorn
 flask-wtf
 flask-login
+flask-cors

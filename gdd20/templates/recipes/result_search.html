@@ -40,10 +40,13 @@
 </head>
 
 <body id="page-top" class="index">
-<style>
-    
+<style> 
     .form-control:focus {
         border-color: #C1BEBE;
+    }
+
+    .fa-heart, .fa-heart-o{
+        color:#F7370E;
     }
 
 </style>
@@ -59,9 +62,9 @@
 			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
 			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
             {% else %}
-            <a href="#" class="btn btn-success btn-sm" style="position: absolute; top: 10px; right: 285px;">
+            <a href="#" class="btn btn-success btn-sm" style="position: absolute; top: 10px; right: -210px;">
             <span class="glyphicon glyphicon-log-in"></span> Ir para minha página</a>
-            <a href="/logout/" class="btn btn-danger btn-sm" style="position: absolute; top: 50px; right: 285px;">
+            <a href="/logout/" class="btn btn-danger btn-sm" style="position: absolute; top: 50px; right: -210px;">
             <span class="glyphicon glyphicon-log-out"></span> Sair da minha conta</a>
             {% endif %}
 		</div>
@@ -86,7 +89,7 @@
 </style>
 
 <div class="right_div">
-	<img src="{{ url_for('static', filename='images/colher_receita.png')}}" />
+	<img src="{{ url_for('static', filename='images/colher_receita.png')}}" style="margin-top: 18px;"/>
 	<img src="{{ url_for('static', filename='images/faca_receita.png')}}" />
 </div>
 
@@ -118,7 +121,20 @@
 						</div>
 						<div class="col-lg-8">
 							<div class="desc-content">
-							<h3>{{recipes.title}}</h3>
+							<h3>{{recipes.title}}
+                                {% if current_user.is_authenticated %}
+                                    {% if recipes.id not in user_likes %}
+                                        <a style="float: right;" href="javascript:void(0);" onclick="likerecipe({{ current_user.id }}, {{ recipes.id }});">
+                                            <i id="like{{ recipes.id }}" class="fa fa-heart-o"></i>
+                                        </a>
+                                    {% else%}
+                                        <a style="float: right;" href="javascript:void(0);" onclick="dislikerecipe({{ current_user.id }}, {{ recipes.id }});">
+                                            <i id="dislike{{ recipes.id }}" class="fa fa-heart"></i>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </h3>
+
 							<hr />								
                             <h5>Ingredients</h5>
 								{% for ingredients in recipes.ingredients %}
@@ -180,6 +196,32 @@
         </div>
     </footer>
 
+    <script>
+    function likerecipe(user_id, recipe_id){
+        $('#like'.concat(recipe_id.toString())).removeClass("fa fa-heart-o");
+        $('#like'.concat(recipe_id.toString())).addClass("fa fa-heart");
+        $.ajax({
+          method: "POST",
+          url: "/likerecipe",
+          data: { recipe_id: recipe_id,
+                  user_id: user_id,
+                  action: "like"}
+        });
+    }
+
+    function dislikerecipe(user_id, recipe_id){
+        $('#dislike'.concat(recipe_id.toString())).removeClass("fa fa-heart");
+        $('#dislike'.concat(recipe_id.toString())).addClass("fa fa-heart-o");
+        $.ajax({
+          method: "POST",
+          url: "/likerecipe",
+          data: { recipe_id: recipe_id,
+                  user_id: user_id,
+                  action: "dislike"}
+        });
+    }
+
+    </script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 

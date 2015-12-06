@@ -37,4 +37,4 @@ def login():
 @login_blueprint.route('/logout/', methods=['GET'])
 def logout():
     logout_user()
-    return redirect(request.referrer)
+    return redirect('/')

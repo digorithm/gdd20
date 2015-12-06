@@ -5,9 +5,11 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
 from flask.ext.login import LoginManager
-
+from flask.ext.cors import CORS
 # Define the WSGI application object
 app = Flask(__name__)
+CORS(app)
+
 app.config['DEBUG'] = True
 login_manager = LoginManager()
 

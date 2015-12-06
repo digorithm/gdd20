@@ -44,6 +44,23 @@ class FastFoodClient(RESTClientJSONBase):
                     role=u['user']['role'])
         return user
 
+    def like_recipe(self, user_id, recipe_id, action):
+        data = {'user_id': user_id,
+                'recipe_id': recipe_id,
+                'action': action}
+        req = requests.post(self.api_url+'/likerecipe/', data=data)
+        return json.loads(req.text)
+
+    def get_user_likes(self, user_id):
+        data = {'user_id': user_id}
+        req = requests.get(self.api_url+'/userlikes/', data=data)
+        return json.loads(req.text)
+
+    def get_recipe_likes(self, recipe_id):
+        data = {'recipe_id': recipe_id}
+        req = requests.get(self.api_url+'/recipelikes/', data=data)
+        return json.loads(req.text)
+
     @login_manager.user_loader
     def load_user(id):
         data = {'user_id': id}
