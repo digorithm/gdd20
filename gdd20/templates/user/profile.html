@@ -136,26 +136,14 @@
                         </a></p>
                     </div>
                     <div class="col-lg-4">
-                        <h3 class="ic_recipes_likes_title">Receitas criadas</h3>
-                        <img class="ic_recipes_likes" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
-                        <h6>Title Recipe</h6>
-                        <p class="ic_recipes_likes_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. </p>
-
-                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
-                        <h6>Title Recipe</h6>
-                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
-
-                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
-                        <h6>Title Recipe</h6>
-                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
-
-                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
-                        <h6>Title Recipe</h6>
-                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
-
-                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
-                        <h6>Title Recipe</h6>
-                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+                        <h3 class="ic_recipes_likes_title">Receitas Curtidas</h3>
+                        {% for recipe in liked_recipes %}
+                        <img class="ic_recipes_likes" src="{{ url_for('static', filename='images/feijoada.jpg')}}" style="margin-right:5px;"> 
+                        <h6> {{ recipe.title }} </h6>
+                        <p class="ic_recipes_likes_font">
+                            {{ recipe.description }}
+                        </p>
+                        {% endfor %}
                     </div>    
 				</div>
 			</div>
