@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Geladeira - {{ title }}</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/freelancer.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "add688cf-c254-4408-bfe3-144a9f17ad2f", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+</head>
+
+<body id="page-top" class="index">
+<style> 
+    .form-control:focus {
+        border-color: #C1BEBE;
+    }
+
+    .fa-heart, .fa-heart-o{
+        color:#F7370E;
+    }
+
+</style>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+    <div class="new-container">
+        <div class="col-lg-10">
+			<div class="navbar-header">
+				<a href="/"><img class="image_logo" src="{{ url_for('static', filename='images/logo.png')}}" /></a>
+			</div>
+            {% if not current_user.is_authenticated %}
+			<a href="/login" class="btn btn-primary btn-default btn-sm" style="position: absolute; top: 10px; right: -215px;">
+			<span class="glyphicon glyphicon-log-in"></span> logar / cadastrar-se</a>
+            {% else %}
+            <a href="#" class="btn btn-success btn-sm" style="position: absolute; top: 10px; right: -210px;">
+            <span class="glyphicon glyphicon-log-in"></span> Ir para minha página</a>
+            <a href="/logout/" class="btn btn-danger btn-sm" style="position: absolute; top: 50px; right: -210px;">
+            <span class="glyphicon glyphicon-log-out"></span> Sair da minha conta</a>
+            {% endif %}
+		</div>
+		<div class="col-lg-2">
+			<div class="navbar-header">
+			</div>
+		</div>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<style>
+	.btn-primary {
+  color: #ffffff;
+  background-color: #0DCAF2;
+  border-color: #F4F2F1;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  color: #0DCAF2;
+  background-color: #F5F5F5;
+  border-color: #DBD8D7;
+}
+</style>
+<!-- Header -->
+<section id="principal" class="principal">
+<div class="new-container div-red-absolute">
+	<div class="row">
+		<div class="center_div">
+			<div class="panel-content panel panel-defualt">
+				<div class="row">
+					<div class="col-lg-4">
+                    <img class="ic_config" src="{{ url_for('static', filename='images/ic_brightness_high_black_48dp.png')}}" />
+						<div class="picture">
+							<img class="photo" src="{{ url_for('static', filename='images/profile.png')}}" />
+                            <h5>{{current_user.name}}</h5>
+                            <h6>{{current_user.email}}</h6>
+						</div>
+                    
+					</div>
+                    <div class="col-lg-4">
+                        <h3 class="ic_recipes_creating_title">Receitas criadas</h3>
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. <br><a style="float: right;" href="javascript:void(0)">
+                            <i id="" class="fa fa-heart"> 1</i>
+                        </a></p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. <br><a style="float: right;" href="javascript:void(0)">
+                            <i id="" class="fa fa-heart"> 2</i>
+                        </a></p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. <br><a style="float: right;" href="javascript:void(0)">
+                            <i id="" class="fa fa-heart"> 3</i>
+                        </a></p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. <br><a style="float: right;" href="javascript:void(0)">
+                            <i id="" class="fa fa-heart"> 4</i>
+                        </a></p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. <br><a style="float: right;" href="javascript:void(0)">
+                            <i id="" class="fa fa-heart"> 5</i>
+                        </a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h3 class="ic_recipes_likes_title">Receitas criadas</h3>
+                        <img class="ic_recipes_likes" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_likes_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos. </p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+
+                        <img class="ic_recipes_creating" src="{{ url_for('static', filename='images/feijoada.jpg')}}">
+                        <h6>Title Recipe</h6>
+                        <p class="ic_recipes_creating_font">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.</p>
+                    </div>    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+    <footer class="footer-below-result-search">
+        <div class="new-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-1 aligning-text-right">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Sobre
+                        </span></a>
+                    </div>
+                    <div class="col-lg-1 aligning-text-left">
+                        <a style="padding-top: 5px; font-style='Lato'; color:white;" href="#"><span>
+                            Termos
+                        </span></a>
+                    </div>
+                    <div class="col-lg-10 aligning-text-right">
+                                        <span class='st_facebook_hcount' displayText='Facebook'></span>
+                    <span class='st_twitter_hcount' displayText='Tweet'></span>
+                        <span>
+                            Geladeira do dia 20. Todos os direitos reservados.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ url_for('static', filename='js/freelancer.js"') }}></script>
+    </body>
+</html>
