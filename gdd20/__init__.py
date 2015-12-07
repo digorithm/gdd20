@@ -29,11 +29,14 @@ def unauthorized_callback():
 # Importing of variable necessary for creating blueprint
 from views.recipes_view import recipe_blueprint
 from views.login_view import login_blueprint
+from views.user_view import user_blueprint
 
 # Creating blueprint for route
 app.register_blueprint(recipe_blueprint)
 
 app.register_blueprint(login_blueprint)
+
+app.register_blueprint(user_blueprint)
 
 # Define the database object which is imported
 # by modules and controllers
