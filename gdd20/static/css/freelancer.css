@@ -525,10 +525,13 @@ text-align:center;
 
 }
 
-.picture{
+.picture {
+    padding:10px;
     overflow: hidden;
 }
 .picture img {
+    border: 3px solid #888;
+    width: 100%;
 }
 
 .ic_config {
@@ -536,20 +539,24 @@ text-align:center;
     margin-left: 10%;
 }
 
-.photo {
+.photo-profile {
     padding-top: 10%;
     padding-button: 20%;
     padding-left: 35%;
     border-radius: 10px;
 }
 
-.picture h5 {
+.photo {
+    border-radius: 10px;
+}
+
+.picture-profile h5 {
     padding-top: 2%;
     padding-button: 20%;
     text-align: center;
 }
 
-.picture h6 {
+.picture-profile h6 {
     padding-button: 20%;
     text-align: center;
     text-transform: lowercase;
@@ -587,7 +594,7 @@ text-align:center;
     border-radius: 3px;
 }
 
-.row {
+.row-profile {
     margin-left: -15px !important;
     margin-right: 0px !important;
 }
@@ -645,9 +652,15 @@ text-align:center;
     border-radius: 10px;
 }
 
-.principal {
+.principal-profile {
     padding-left: 10%;
     padding-right: 10%;
+    padding-top: 5%;
+}
+
+.principal {
+    padding-left: 20%;
+    padding-right: 20%;
     padding-top: 5%;
 }
 
